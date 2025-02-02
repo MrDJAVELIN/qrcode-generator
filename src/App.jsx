@@ -58,6 +58,7 @@ const App = () => {
         <>
             <div className="container">
                 <h1>QRCODE GENERATOR</h1>
+                <a href="/upload">upload qr-code</a>
                 <div className="text">
                     <input
                         type="text"

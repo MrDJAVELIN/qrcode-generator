@@ -51,6 +51,7 @@ const QRImageScanner = () => {
         <>
             <div className="container">
                 <h1>Upload QR-Code</h1>
+                <a href="/#">generate qr-code</a>
 
                 <div className="upload">
                     <input
