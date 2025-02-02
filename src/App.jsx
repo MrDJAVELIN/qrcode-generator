@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import { QRCodeSVG } from "qrcode.react";
 
 const App = () => {
-    const [text, setText] = useState("https://generate-qrcod.vercel.app/");
+    const [text, setText] = useState("https://qrcodgen.vercel.app/");
     const [size, setSize] = useState(180);
+    const [margin, setMargin] = useState(0);
     const [level, setLevel] = useState("L");
     const [bgcolor, setBGColor] = useState("#ffffff");
     const [fgcolor, setFGColor] = useState("#000000");
@@ -64,7 +65,7 @@ const App = () => {
                         onChange={(e) => {
                             setText(e.target.value);
                         }}
-                        placeholder="Text"
+                        placeholder="Text or url..."
                     />
                 </div>
                 <div className="size">
@@ -146,12 +147,40 @@ const App = () => {
                     </div>
                 </div>
 
+                <div className="margin">
+                    <label htmlFor="input">Borders</label>
+                    <div className="margins">
+                        <input
+                            type="range"
+                            name="padding"
+                            id="padding"
+                            min={0}
+                            max={10}
+                            value={margin}
+                            onChange={(e) => {
+                                setMargin(e.target.value);
+                            }}
+                        />
+                        <input
+                            type="number"
+                            name="padding"
+                            value={margin}
+                            min={0}
+                            max={10}
+                            onChange={(e) => {
+                                setMargin(e.target.value);
+                            }}
+                        />
+                    </div>
+                </div>
+
                 <div
                     className="qrcode"
                     onClick={() => {
                         downloadPNG();
                     }}
                 >
+                    <span>click to download</span>
                     <QRCodeSVG
                         value={text}
                         size={size}
@@ -159,9 +188,8 @@ const App = () => {
                         bgColor={bgcolor}
                         fgColor={fgcolor}
                         id="qrcode"
-                        marginSize={0}
+                        marginSize={margin}
                     />
-                    <span>click to download</span>
                 </div>
             </div>
         </>

@@ -23,7 +23,7 @@ h1 {
 
 body {
     display: flex;
-    align-items: center;
+    align-items: start;
     justify-content: center;
 
     background-size: 100% 100%;
@@ -50,7 +50,7 @@ body {
     justify-content: center;
     flex-direction: column;
 
-    gap: 25px;
+    gap: 30px;
 }
 
 .text input {
@@ -62,13 +62,15 @@ body {
 
     outline: none;
 
-    padding: 10px;
+    padding: 12px;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    width: 350px;
+    width: 400px;
+
+    font-size: 22px;
 }
 
 .text input::placeholder {
@@ -108,7 +110,7 @@ body {
     border-radius: 50px;
 }
 
-input[type="range"]::-webkit-slider-thumb {
+.size input[type="range"]::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
 
@@ -203,13 +205,73 @@ input[type="range"]::-webkit-slider-thumb {
     cursor: pointer;
 }
 
+.margin {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.margin label {
+    font-size: 25px;
+}
+.margins {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+}
+
+.margin input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    background: #fff;
+    cursor: pointer;
+    width: 200px;
+    height: 5px;
+
+    border-radius: 50px;
+}
+
+.margin input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+
+    background-color: #919191;
+    filter: drop-shadow(0px 0px 10px#000);
+    width: 15px;
+    height: 15px;
+    border-radius: 100%;
+}
+
+.margin input[type="number"] {
+    background: transparent;
+
+    border: 1px solid #ffffff20;
+
+    border-radius: 10px;
+
+    outline: none;
+
+    padding: 5px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.margin input[type="number"]:focus {
+    border-radius: 15px;
+    border: 1px solid #ffffff50;
+}
+
 .qrcode {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
 
-    background: var(--bg-color);
+    background: var(--bgb-color);
 
     border-radius: 10px;
 
@@ -218,6 +280,12 @@ input[type="range"]::-webkit-slider-thumb {
     gap: 10px;
 
     cursor: pointer;
+
+    backdrop-filter: blur(5px);
+}
+
+#qrcode {
+    filter: drop-shadow(0px 0px 5px #00000050);
 }
 
 .qrcode span {
