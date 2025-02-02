@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import { QRCodeSVG } from "qrcode.react";
 
 const App = () => {
-    const [text, setText] = useState("");
-    const [size, setSize] = useState(256);
+    const [text, setText] = useState("https://generate-qrcod.vercel.app/");
+    const [size, setSize] = useState(180);
     const [level, setLevel] = useState("L");
     const [bgcolor, setBGColor] = useState("#ffffff");
     const [fgcolor, setFGColor] = useState("#000000");
@@ -68,27 +68,30 @@ const App = () => {
                     />
                 </div>
                 <div className="size">
-                    <input
-                        type="range"
-                        name="range"
-                        id="range"
-                        min={21}
-                        max={512}
-                        value={size}
-                        onChange={(e) => {
-                            setSize(e.target.value);
-                        }}
-                    />
-                    <input
-                        type="number"
-                        name="size"
-                        value={size}
-                        min={21}
-                        max={512}
-                        onChange={(e) => {
-                            setSize(e.target.value);
-                        }}
-                    />
+                    <label htmlFor="input">Size</label>
+                    <div className="sizes">
+                        <input
+                            type="range"
+                            name="range"
+                            id="range"
+                            min={21}
+                            max={512}
+                            value={size}
+                            onChange={(e) => {
+                                setSize(e.target.value);
+                            }}
+                        />
+                        <input
+                            type="number"
+                            name="size"
+                            value={size}
+                            min={21}
+                            max={512}
+                            onChange={(e) => {
+                                setSize(e.target.value);
+                            }}
+                        />
+                    </div>
                 </div>
                 <div className="levels">
                     <div className="lvl">
@@ -104,17 +107,6 @@ const App = () => {
                         <label htmlFor="input">L</label>
                     </div>
 
-                    <div className="lvl">
-                        <input
-                            type="radio"
-                            name="level"
-                            value="Q"
-                            onChange={(e) => {
-                                setLevel(e.target.value);
-                            }}
-                        />
-                        <label htmlFor="input">Q</label>
-                    </div>
                     <div className="lvl">
                         <input
                             type="radio"
