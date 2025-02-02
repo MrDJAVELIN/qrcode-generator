@@ -1,0 +1,206 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+:root {
+    --main-color: #ffffff85;
+    --bg-color: #00000085;
+    --mainb-color: #ffffff85;
+    --bgb-color: #00000085;
+}
+
+* {
+    font-family: "Poppins", sans-serif;
+    font-size: 20px;
+    color: #fff;
+    transition: all 0.3s;
+}
+
+h1 {
+    font-size: 50px;
+    color: #fff;
+}
+
+body {
+    background-size: 100% 100%;
+    background-position: 0px 0px;
+    background-image: conic-gradient(
+        from 180deg at 50% 30%,
+        var(--mainb-color) 0%,
+        var(--bgb-color) 100%
+    );
+
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+    background-color: rgb(0, 0, 0);
+
+    height: 100vh;
+}
+
+.container {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    gap: 25px;
+}
+
+.text input {
+    background: transparent;
+
+    border: 1px solid #ffffff20;
+
+    border-radius: 10px;
+
+    outline: none;
+
+    padding: 10px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 350px;
+}
+
+.text input::placeholder {
+    color: #ffffff80;
+}
+
+.text input:focus {
+    border-radius: 15px;
+    border: 1px solid #ffffff50;
+}
+
+.size {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+}
+
+.size input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    background: #fff;
+    cursor: pointer;
+    width: 200px;
+    height: 5px;
+
+    border-radius: 50px;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+
+    background-color: #919191;
+    filter: drop-shadow(0px 0px 10px#000);
+    width: 15px;
+    height: 15px;
+    border-radius: 100%;
+}
+
+.size input[type="number"] {
+    background: transparent;
+
+    border: 1px solid #ffffff20;
+
+    border-radius: 10px;
+
+    outline: none;
+
+    padding: 5px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.size input[type="number"]:focus {
+    border-radius: 15px;
+    border: 1px solid #ffffff50;
+}
+
+.levels {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 25px;
+}
+
+.lvl {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    border: 1px solid #ffffff85;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.lvl input {
+    width: 25px;
+    height: 25px;
+}
+
+.lvl label {
+    font-size: 30px;
+
+    order: 1;
+}
+
+.colors {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 50px;
+}
+
+.color {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.color input {
+    background: transparent;
+
+    border: none;
+    outline: none;
+
+    /* border: 1px solid #ffffff90; */
+    width: 50px;
+    height: 50px;
+
+    padding: 0;
+    margin: 0;
+}
+
+.qrcode {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    background: var(--bg-color);
+
+    border-radius: 10px;
+
+    padding: 20px;
+
+    gap: 10px;
+
+    cursor: pointer;
+}
+
+.qrcode span {
+    color: #000;
+}
