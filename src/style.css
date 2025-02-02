@@ -15,11 +15,17 @@
 }
 
 h1 {
-    font-size: 40px;
+    font-size: 35px;
     color: #fff;
+
+    text-align: center;
 }
 
 body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     background-size: 100% 100%;
     background-position: 0px 0px;
     background-image: conic-gradient(
