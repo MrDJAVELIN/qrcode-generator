@@ -59,7 +59,7 @@ const QRImageScanner = () => {
                         accept="image/*"
                         onChange={handleImageUpload}
                     />
-                    <img src={imagePreview} alt="" />
+                    <img className="imgpreview" src={imagePreview} alt="" />
                     <h1>
                         Result:<br></br>
                         {qrResult || "Upload..."}
