@@ -10,23 +10,13 @@ const App = () => {
     const [fgcolor, setFGColor] = useState("#000000");
 
     useEffect(() => {
-        if (qrSize != "") {
-            if (parseInt(qrSize) < 21) {
-                setSize(21);
-            }
-            if (parseInt(qrSize) > 1024) {
-                setSize(1024);
-            }
+        if (parseInt(margin) < 0) {
+            setMargin(0);
         }
-        if (margin != "") {
-            if (parseInt(margin) < 0) {
-                setMargin(0);
-            }
-            if (parseInt(margin) > 10) {
-                setMargin(10);
-            }
+        if (parseInt(margin) > 10) {
+            setMargin(10);
         }
-    }, [margin, qrSize]);
+    }, [margin]);
 
     useEffect(() => {
         document.documentElement.style.setProperty(
@@ -52,10 +42,19 @@ const App = () => {
 
         const img = new Image();
         img.onload = () => {
+            let size = qrSize;
+
+            if (parseInt(size) < 21) {
+                size = 21;
+            }
+            if (parseInt(size) > 1024) {
+                size = 1024;
+            }
+
             const canvas = document.createElement("canvas");
-            const size = qrSize;
             canvas.width = size;
             canvas.height = size;
+
             const ctx = canvas.getContext("2d");
 
             ctx.drawImage(img, 0, 0, size, size);
