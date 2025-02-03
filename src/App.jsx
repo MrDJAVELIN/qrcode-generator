@@ -3,11 +3,30 @@ import { QRCodeSVG } from "qrcode.react";
 
 const App = () => {
     const [text, setText] = useState("https://qrcodgen.vercel.app/");
-    const [size, setSize] = useState(180);
-    const [margin, setMargin] = useState(0);
+    const [qrSize, setSize] = useState(512);
+    const [margin, setMargin] = useState(3);
     const [level, setLevel] = useState("L");
     const [bgcolor, setBGColor] = useState("#ffffff");
     const [fgcolor, setFGColor] = useState("#000000");
+
+    useEffect(() => {
+        if (qrSize != "") {
+            if (parseInt(qrSize) < 21) {
+                setSize(21);
+            }
+            if (parseInt(qrSize) > 1024) {
+                setSize(1024);
+            }
+        }
+        if (margin != "") {
+            if (parseInt(margin) < 0) {
+                setMargin(0);
+            }
+            if (parseInt(margin) > 10) {
+                setMargin(10);
+            }
+        }
+    }, [margin, qrSize]);
 
     useEffect(() => {
         document.documentElement.style.setProperty(
@@ -34,7 +53,7 @@ const App = () => {
         const img = new Image();
         img.onload = () => {
             const canvas = document.createElement("canvas");
-            const size = svgElement.getAttribute("width") || 256; // Берем размер SVG
+            const size = qrSize;
             canvas.width = size;
             canvas.height = size;
             const ctx = canvas.getContext("2d");
@@ -58,7 +77,7 @@ const App = () => {
         <>
             <div className="container">
                 <h1>QRCODE GENERATOR</h1>
-                <a href="/upload">upload qr-code</a>
+                <a href="/upload">check qr-code</a>
                 <div className="text">
                     <input
                         type="text"
@@ -77,8 +96,8 @@ const App = () => {
                             name="range"
                             id="range"
                             min={21}
-                            max={512}
-                            value={size}
+                            max={1024}
+                            value={qrSize}
                             onChange={(e) => {
                                 setSize(e.target.value);
                             }}
@@ -86,9 +105,9 @@ const App = () => {
                         <input
                             type="number"
                             name="size"
-                            value={size}
+                            value={qrSize}
                             min={21}
-                            max={512}
+                            max={1024}
                             onChange={(e) => {
                                 setSize(e.target.value);
                             }}
@@ -181,10 +200,12 @@ const App = () => {
                         downloadPNG();
                     }}
                 >
-                    <span>click to download</span>
+                    <span>
+                        click to download ({qrSize}x{qrSize}px)
+                    </span>
                     <QRCodeSVG
                         value={text}
-                        size={size}
+                        size={qrSize}
                         level={level}
                         bgColor={bgcolor}
                         fgColor={fgcolor}
