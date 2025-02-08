@@ -62,7 +62,7 @@ const QRImageScanner = () => {
                     <img className="imgpreview" src={imagePreview} alt="" />
                     <h1>
                         Result:<br></br>
-                        {qrResult || "Upload QrCode..."}
+                        {qrResult || "Upload..."}
                     </h1>
                 </div>
             </div>
