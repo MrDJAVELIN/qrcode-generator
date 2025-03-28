@@ -50,20 +50,23 @@ const QRImageScanner = () => {
     return (
         <>
             <div className="container">
-                <h1>Upload QR-Code</h1>
-                <a href="/#">generate qr-code</a>
-
-                <div className="upload">
-                    <input
-                        type="file"
-                        accept="image/*"
-                        onChange={handleImageUpload}
-                    />
-                    <img className="imgpreview" src={imagePreview} alt="" />
-                    <h1>
-                        Result:<br></br>
-                        {qrResult || "Upload..."}
-                    </h1>
+                <div className="meta">
+                    <h1>Upload QR-Code</h1>
+                    <a href="/#">generate qr-code</a>
+                </div>
+                <div className="root">
+                    <div className="upload">
+                        <input
+                            type="file"
+                            accept="image/*"
+                            onChange={handleImageUpload}
+                        />
+                        <img className="imgpreview" src={imagePreview} alt="" />
+                        <h2 className="result">
+                            Result:<br></br>
+                            {qrResult || "Upload..."}
+                        </h2>
+                    </div>
                 </div>
             </div>
         </>

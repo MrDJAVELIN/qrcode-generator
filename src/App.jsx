@@ -75,142 +75,150 @@ const App = () => {
     return (
         <>
             <div className="container">
-                <h1>QRCODE GENERATOR</h1>
-                <a href="/upload">check qr-code</a>
-                <div className="text">
-                    <input
-                        type="text"
-                        className="text-input"
-                        onChange={(e) => {
-                            setText(e.target.value);
+                <div className="meta">
+                    <h1>QRCODE GENERATOR</h1>
+                    <a href="/upload">check qr-code</a>
+                </div>
+                <div className="root">
+                    <div className="settings">
+                        <div className="text">
+                            <input
+                                type="text"
+                                className="text-input"
+                                onChange={(e) => {
+                                    setText(e.target.value);
+                                }}
+                                placeholder="Text or url..."
+                            />
+                        </div>
+                        <div className="size">
+                            <label htmlFor="input">Size</label>
+                            <div className="sizes">
+                                <input
+                                    type="range"
+                                    name="range"
+                                    id="range"
+                                    min={21}
+                                    max={1024}
+                                    value={qrSize}
+                                    onChange={(e) => {
+                                        setSize(e.target.value);
+                                    }}
+                                />
+                                <input
+                                    type="number"
+                                    name="size"
+                                    value={qrSize}
+                                    min={21}
+                                    max={1024}
+                                    onChange={(e) => {
+                                        setSize(e.target.value);
+                                    }}
+                                />
+                            </div>
+                        </div>
+                        <div className="levels">
+                            <div className="lvl">
+                                <input
+                                    type="radio"
+                                    name="level"
+                                    value="L"
+                                    onChange={(e) => {
+                                        setLevel(e.target.value);
+                                    }}
+                                    defaultChecked
+                                />
+                                <label htmlFor="input">L</label>
+                            </div>
+
+                            <div className="lvl">
+                                <input
+                                    type="radio"
+                                    name="level"
+                                    value="H"
+                                    onChange={(e) => {
+                                        setLevel(e.target.value);
+                                    }}
+                                />
+                                <label htmlFor="input">H</label>
+                            </div>
+                        </div>
+                        <div className="colors">
+                            <div className="color">
+                                <input
+                                    type="color"
+                                    name="fgcolor"
+                                    id=""
+                                    value={fgcolor}
+                                    onChange={(e) => {
+                                        setFGColor(e.target.value);
+                                    }}
+                                />
+                                <label htmlFor="input">Color</label>
+                            </div>
+                            <div className="color">
+                                <input
+                                    type="color"
+                                    name="bgcolor"
+                                    id=""
+                                    value={bgcolor}
+                                    onChange={(e) => {
+                                        setBGColor(e.target.value);
+                                    }}
+                                />
+                                <label htmlFor="input">BG</label>
+                            </div>
+                        </div>
+
+                        <div className="margin">
+                            <label htmlFor="input">Borders</label>
+                            <div className="margins">
+                                <input
+                                    type="range"
+                                    name="padding"
+                                    id="padding"
+                                    min={0}
+                                    max={10}
+                                    value={margin}
+                                    onChange={(e) => {
+                                        setMargin(e.target.value);
+                                    }}
+                                />
+                                <input
+                                    type="number"
+                                    name="padding"
+                                    value={margin}
+                                    min={0}
+                                    max={10}
+                                    onChange={(e) => {
+                                        setMargin(e.target.value);
+                                    }}
+                                />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div
+                        className="qrcode"
+                        onClick={() => {
+                            downloadPNG();
                         }}
-                        placeholder="Text or url..."
-                    />
-                </div>
-                <div className="size">
-                    <label htmlFor="input">Size</label>
-                    <div className="sizes">
-                        <input
-                            type="range"
-                            name="range"
-                            id="range"
-                            min={21}
-                            max={1024}
-                            value={qrSize}
-                            onChange={(e) => {
-                                setSize(e.target.value);
-                            }}
-                        />
-                        <input
-                            type="number"
-                            name="size"
-                            value={qrSize}
-                            min={21}
-                            max={1024}
-                            onChange={(e) => {
-                                setSize(e.target.value);
-                            }}
+                    >
+                        <span>
+                            click to download
+                            <br />
+                            {qrSize}x{qrSize}px
+                        </span>
+                        <QRCodeSVG
+                            value={text}
+                            size={qrSize}
+                            level={level}
+                            bgColor={bgcolor}
+                            fgColor={fgcolor}
+                            id="qrcode"
+                            marginSize={margin}
                         />
                     </div>
-                </div>
-                <div className="levels">
-                    <div className="lvl">
-                        <input
-                            type="radio"
-                            name="level"
-                            value="L"
-                            onChange={(e) => {
-                                setLevel(e.target.value);
-                            }}
-                            defaultChecked
-                        />
-                        <label htmlFor="input">L</label>
-                    </div>
-
-                    <div className="lvl">
-                        <input
-                            type="radio"
-                            name="level"
-                            value="H"
-                            onChange={(e) => {
-                                setLevel(e.target.value);
-                            }}
-                        />
-                        <label htmlFor="input">H</label>
-                    </div>
-                </div>
-                <div className="colors">
-                    <div className="color">
-                        <input
-                            type="color"
-                            name="fgcolor"
-                            id=""
-                            value={fgcolor}
-                            onChange={(e) => {
-                                setFGColor(e.target.value);
-                            }}
-                        />
-                        <label htmlFor="input">Color</label>
-                    </div>
-                    <div className="color">
-                        <input
-                            type="color"
-                            name="bgcolor"
-                            id=""
-                            value={bgcolor}
-                            onChange={(e) => {
-                                setBGColor(e.target.value);
-                            }}
-                        />
-                        <label htmlFor="input">BG</label>
-                    </div>
-                </div>
-
-                <div className="margin">
-                    <label htmlFor="input">Borders</label>
-                    <div className="margins">
-                        <input
-                            type="range"
-                            name="padding"
-                            id="padding"
-                            min={0}
-                            max={10}
-                            value={margin}
-                            onChange={(e) => {
-                                setMargin(e.target.value);
-                            }}
-                        />
-                        <input
-                            type="number"
-                            name="padding"
-                            value={margin}
-                            min={0}
-                            max={10}
-                            onChange={(e) => {
-                                setMargin(e.target.value);
-                            }}
-                        />
-                    </div>
-                </div>
-
-                <div
-                    className="qrcode"
-                    onClick={() => {
-                        downloadPNG();
-                    }}
-                >
-                    <span>
-                        click to download ({qrSize}x{qrSize}px)
-                    </span>
-                    <QRCodeSVG
-                        value={text}
-                        size={qrSize}
-                        level={level}
-                        bgColor={bgcolor}
-                        fgColor={fgcolor}
-                        id="qrcode"
-                        marginSize={margin}
-                    />
                 </div>
             </div>
         </>
