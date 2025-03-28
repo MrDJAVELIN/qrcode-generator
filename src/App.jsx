@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { QRCodeSVG } from "qrcode.react";
+import djavelin from "./img/logo.svg";
 
 const App = () => {
     const [text, setText] = useState("https://qrcodgen.vercel.app/");
@@ -220,6 +221,26 @@ const App = () => {
                         />
                     </div>
                 </div>
+                <a
+                    className="dbd"
+                    href="https://djavelin.vercel.app/"
+                    target="_blank"
+                    style={{
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        flexDirection: "column",
+                        gap: "1px",
+                        textDecoration: "none",
+
+                        fontSize: "1rem",
+                        color: "#fff",
+                        fontFamily: "'Poppins', sans-serif",
+                    }}
+                >
+                    Developed by
+                    <img src={djavelin} width={110} />
+                </a>
             </div>
         </>
     );

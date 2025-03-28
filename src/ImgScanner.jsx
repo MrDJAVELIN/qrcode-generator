@@ -1,6 +1,8 @@
 import { useState } from "react";
 import jsQR from "jsqr";
 
+import djavelin from "./img/logo.svg";
+
 const QRImageScanner = () => {
     const [qrResult, setQrResult] = useState("");
     const [imagePreview, setImagePreview] = useState(null);

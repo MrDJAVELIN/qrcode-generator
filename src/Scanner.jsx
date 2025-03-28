@@ -5,7 +5,7 @@ const QRScanner = () => {
     const [result, setResult] = useState("");
 
     return (
-        <div>
+        <div className="container">
             <h2>QR Scanner</h2>
             <QrReader
                 constraints={{ facingMode: "environment" }} // Использует заднюю камеру

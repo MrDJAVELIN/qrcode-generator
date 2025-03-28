@@ -69,7 +69,9 @@ body {
 
     flex-direction: column;
 
-    gap: 100px;
+    gap: 45px;
+
+    position: relative;
 }
 
 .root {
@@ -373,7 +375,7 @@ body {
     }
 
     body {
-        justify-content: start;
+        align-items: start;
     }
 
     .root {
